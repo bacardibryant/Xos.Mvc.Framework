@@ -1,0 +1,6 @@
+﻿/***************************** bootstrap overrides *****************************/
+
+.nav-collapse {
+    overflow: visible !important;
+    height:0;
+}
