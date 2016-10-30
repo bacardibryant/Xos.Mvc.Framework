@@ -13,7 +13,7 @@ namespace Xos.Mvc.Framework.Filters
                 {
                     throw new HttpException("Invalid Submission");
                 }
-                if (filterContext.HttpContext.Request.UrlReferrer.Host != "mdanderson.org")
+                if (filterContext.HttpContext.Request.UrlReferrer.Host != "{example.com}")
                 {
                     throw new HttpException("InvalidSubmission");
                 }
