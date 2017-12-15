@@ -213,3 +213,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/Xos.Mvc/.vs/Xos.Mvc/v15/Server/sqlite3
+/Xos.Mvc/.vs/config
