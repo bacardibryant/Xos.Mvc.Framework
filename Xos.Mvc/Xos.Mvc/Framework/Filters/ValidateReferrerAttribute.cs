@@ -3,6 +3,11 @@ using System.Web.Mvc;
 
 namespace Xos.Mvc.Framework.Filters
 {
+    /// <summary>
+    /// A useful attribute that can be used to authorize access to a route.
+    /// When applied to controllers with post action methods, the referring domain can be verified.
+    /// If the referrer is not on the approved list, then the submission can be ignored or handled however decided.
+    /// </summary>
     public class ValidateReferrerAttribute : AuthorizeAttribute
     {
         public override void OnAuthorization(AuthorizationContext filterContext)

@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Xos.Mvc.Framework.Models
 {
-    public class BaseModel : IDisposable
+    /// <summary>
+    /// A base model with standard model properties. Application models inheriting from this class get these
+    /// properties automatically without the need to add them each time.
+    /// </summary>
+    public class BaseModel
     {
-        // Flag: Has Dispose already been called? 
-        private bool _disposed;
-
         [Display(Name = "Created By")]
         [StringLength(250, ErrorMessage = "Created by cannot exceed 150 characters.")]
         public string CreatedBy { get; set; }
@@ -28,30 +29,5 @@ namespace Xos.Mvc.Framework.Models
 
         [Display(Name = "Is Deleted?")]
         public bool IsDeleted { get; set; }
-
-
-        // Public implementation of Dispose pattern callable by consumers. 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        // Protected implementation of Dispose pattern. 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (_disposed)
-                return;
-
-            if (disposing)
-            {
-                // Free any other managed objects here. 
-                //
-            }
-
-            // Free any unmanaged objects here. 
-            //
-            _disposed = true;
-        }
     }
 }

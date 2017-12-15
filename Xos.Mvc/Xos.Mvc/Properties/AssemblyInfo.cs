@@ -6,13 +6,13 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
 [assembly: AssemblyTitle("Xos.Mvc")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("ASP.NET MVC Application helpers")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Xos.Mvc")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyCopyright("Copyright © 2013 XNODE SOLUTIONS, LLC")]
+[assembly: AssemblyTrademark("XNODE Solutions")]
+[assembly: AssemblyCulture("en-US")]
 
 // Si ComVisible se establece en false, los componentes COM no verán los 
 // tipos de este ensamblado. Si necesita obtener acceso a un tipo de este ensamblado desde 
@@ -31,5 +31,7 @@ using System.Runtime.InteropServices;
 //
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión 
 // mediante el carácter '*', como se muestra a continuación:
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("3.0.*")]
+
+// Removing the AssemblyFileVersion attribute declaration forces the compiler to assign the matching AssemblyVersion value to the attribute.
+//[assembly: AssemblyFileVersion(version: "3.0.*")]

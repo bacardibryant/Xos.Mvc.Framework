@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Xos.Mvc.Framework.Extensions
 {
+    /// <summary>
+    /// Various extension methods for DateTime, Int, and Enumerations.
+    /// </summary>
     public static class Extensions
     {
         public static DateTime FirstDayOfWeek(this DateTime date)

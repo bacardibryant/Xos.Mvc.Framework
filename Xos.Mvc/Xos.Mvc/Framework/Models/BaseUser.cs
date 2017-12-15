@@ -3,6 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Xos.Mvc.Framework.Models
 {
+    /// <summary>
+    /// A base user model that can extend the default ASP.NET MVC Application User adding these fields
+    /// automatically.
+    /// </summary>
     public class BaseUser : BaseModel
     {
         [Display(Name="First Name")]

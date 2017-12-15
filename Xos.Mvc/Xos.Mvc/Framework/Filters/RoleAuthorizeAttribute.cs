@@ -3,9 +3,14 @@ using System.Web.Mvc;
 
 namespace Xos.Mvc.Framework.Filters
 {
+    /// <summary>
+    /// Allows the UnauthorizedRequest to be handled differently based on roles.
+    /// More specifically, redirects can be customized based on roles.
+    /// </summary>
     public class RoleAuthorizeAttribute : AuthorizeAttribute
     {
         private string _redirectUrl = "";
+
         public string RedirectUrl {
             get { return _redirectUrl; }
             set { _redirectUrl = value; }
