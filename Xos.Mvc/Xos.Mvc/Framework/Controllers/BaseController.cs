@@ -6,17 +6,19 @@ namespace Xos.Mvc.Framework.Controllers
     {
         /// <summary>
         /// Adds exception logging to the controller so that exceptions can be logged.
-        /// This is a simplistic approach, tools such as ELMAH might be better candidates for a
-        /// more robust fully featured logging engine.
+        /// This is a simplistic approach, tools such as ELMAH (https://elmah.github.io/) may be better candidates
+        /// if a more fully featured logging engine is needed.
         /// </summary>
         /// <param name="filterContext"></param>
 		protected override void OnException( ExceptionContext filterContext )
 		{
-			// Do additional things like logging here.
+            // Do additional things such as exception logging here.
+            // Assuming that a LogErrorFile path and name has been set on the Settings object.
+
 			// WriteLog( Settings.LogErrorFile, filterContext.Exception.ToString( ) );
 
-			// Not sure if this needs to be called since base is executed.
-			// maybe the exception should not be handled.
+			// Not sure if this is a good idea. Maybe the exception should not be handled.
+
 			// filterContext.ExceptionHandled = true;
 			// this.View( "Error" ).ExecuteResult( this.ControllerContext );
 
@@ -24,14 +26,14 @@ namespace Xos.Mvc.Framework.Controllers
 		}
 
 		/// <summary>
-		/// Logs a message to the given log file
+		/// Logs a message to the given log file.
 		/// </summary>
-		/// <param name="logFile">The filename to log to</param>
-		/// <param name="text">The message to log</param>
+		/// <param name="logFile">The filename, including the path, write to.</param>
+		/// <param name="text">The message to log.</param>
 		static void WriteLog( string logFile, string text )
 		{
-            // Example of the type of file based logging.
-            // Complete code as you see fit.
+            // Example of file based logging.
+            // Use/Re-write code as needed.
 
             /*
              * StringBuilder message = new StringBuilder( );

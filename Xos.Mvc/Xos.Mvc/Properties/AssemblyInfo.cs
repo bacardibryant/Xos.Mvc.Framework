@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Xos.Mvc")]
 [assembly: AssemblyCopyright("Copyright © 2013 XNODE SOLUTIONS, LLC")]
 [assembly: AssemblyTrademark("XNODE Solutions")]
-[assembly: AssemblyCulture("en-US")]
+[assembly: AssemblyCulture("")]
 
 // Si ComVisible se establece en false, los componentes COM no verán los 
 // tipos de este ensamblado. Si necesita obtener acceso a un tipo de este ensamblado desde 

@@ -18,12 +18,36 @@ namespace Xos.Mvc.Framework.Infrastructure
             BundleTable.Bundles.Add(new StyleBundle( "~/framework/css/overrides" ).Include(
                 "~/Framework/Content/overrides.css"));
 
-            // jquery plugins and extensions
-			BundleTable.Bundles.Add( new ScriptBundle( "~/framework/scripts" ).Include(
-				"~/Framework/Scripts/ux-tools.js",
-                "~/Framework/Scripts/jquery-form-defaults.js",
-				"~/Framework/Scripts/jquery.cookie.js",
-                "~/Framework/Scripts/jquery.mask.js") );
+            // attempt to load the jquery ui stylesheets if they have been loaded into the project.
+            try
+            {
+                BundleTable.Bundles.Add(new StyleBundle("~/framework/css/optionals").Include(
+                   "~/Content/themes/base/jquery-ui.css"));
+            }
+            catch {
+                BundleTable.Bundles.Add(new StyleBundle("~/framework/css/optionals").Include(
+                       "~/Framework/Content/styles-not-found.css"));
+            }
+
+            // jquery plugins and extensions. Assumes that the dependency scripts are referenced prior to this script reference.
+            BundleTable.Bundles.Add( new ScriptBundle( "~/framework/scripts" ).Include(
+                "~/Framework/Scripts/xos-js-exceptions.js",
+                "~/Framework/Scripts/xos-js-extensions.js",
+                "~/Framework/Scripts/jquery-form-defaults.js") );
+
+            // attempt to load the jquery UI library if it has been add to the project.
+            try
+            {
+                BundleTable.Bundles.Add(new ScriptBundle("~/framework/scripts/optionals").Include(
+                    "~/Scripts/jquery-ui-{version}.js"));
+            }
+            catch {
+                BundleTable.Bundles.Add(new ScriptBundle("~/framework/scripts/optionals").Include(
+                    "~/Framework/Scripts/scripts-not-found.js"));
+            }
+
+            // the optimizations in ASP.NET bundling breaks jQuery UI.
+            BundleTable.EnableOptimizations = false;
 		}
 	}
 }

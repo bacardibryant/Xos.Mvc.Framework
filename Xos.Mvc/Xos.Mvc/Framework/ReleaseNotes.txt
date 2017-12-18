@@ -1,0 +1,75 @@
+﻿XOS.MVC.Framework
+
+Release Notes
+
+v3.1.0
+###############################################################################################################################################
+
+### New
+	- Added ReleaseNotes.txt to track version changes.
+	- Added xos-js-exceptions.js implementing custom javascript exceptions.
+	- Added xos-js-extensions.js implementing custom javascript extensions.
+	- Added MVC components to host project to complete a demo page.
+	- Added example usage of some of the code.
+	
+### Fixed
+	- Added missing dependency to EntityFramework in NuGet package.
+	- Fixed bug related to error:
+	  Unable to cast object of type 'System.Web.Compilation.BuildResultCompiledAssembly' to type 'System.Web.Compilation.BuildResultCompiledGlobalAsaxType'
+
+### Changed
+	- Removed jquery.cookie plugin. Plugin maintenance is outside the scope of this project.
+	- Removed jquery.mask plugin. Plugin maintenance is outside the scope of this project.
+	- Removed ux-tools. Most methods are deprecated. DOM manipulation is outsite the scope of this project.
+	- Updated FrameworkBundleConfig to reflect changes to script files.
+	- Removed jquery.ui.timepicker plugin. Plugin maintenance is outside the scope of this project.
+
+### Developer
+	- Added Controller and View to host project in source code to demonstrate features.
+	- Added _Layout.cshtml to demonstrate pulling in framework bundles.
+	- Implemented bootstrap and jquery ui as optionals in the FrameworkBundlesConfig.cs in the event that the packages are not loaded.
+
+### Unresolved
+
+###############################################################################################################################################
+
+
+v3.0.1
+###############################################################################################################################################
+
+### New
+	
+### Fixed
+	- Added missing dependency to EntityFramework in NuGet package.
+
+### Changed
+
+### Developer
+
+### Unresolved
+
+###############################################################################################################################################
+
+
+v3.0.0
+###############################################################################################################################################
+
+### New
+	- README.txt file that provides an overview of the project.
+	- Added comments to much of the code that explains use case(s).
+	
+### Fixed
+
+### Changed
+	- Changed target Framework to .NET Framework 4.7.1.
+	- Updated all eligible packages to target framework 471 in host project (this has no affect on the framework classes).
+	- Removed the Xos.Mvc.Tests project.
+	- Removed the respond.js and html5shiv.js scripts.
+	- Removed the IDisposable implementation on the Framework\Models\BaseModel.cs class as the model does not need to implement the interface.
+	- Removed the Framework\Content\ie8-overrides.css file along with its reference in the FrameworkBundleConfig.
+
+### Developer
+
+### Unresolved
+
+###############################################################################################################################################
