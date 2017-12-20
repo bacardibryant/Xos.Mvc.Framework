@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Xos.Mvc")]
 [assembly: AssemblyDescription("ASP.NET MVC Application helpers")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("XNODE Solutions, LLC")]
 [assembly: AssemblyProduct("Xos.Mvc")]
 [assembly: AssemblyCopyright("Copyright © 2013 XNODE SOLUTIONS, LLC")]
 [assembly: AssemblyTrademark("XNODE Solutions")]
@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 //
 // Puede especificar todos los valores o usar los valores predeterminados de número de compilación y de revisión 
 // mediante el carácter '*', como se muestra a continuación:
-[assembly: AssemblyVersion("3.0.*")]
+[assembly: AssemblyVersion("3.1.1")]
 
 // Removing the AssemblyFileVersion attribute declaration forces the compiler to assign the matching AssemblyVersion value to the attribute.
 //[assembly: AssemblyFileVersion(version: "3.0.*")]

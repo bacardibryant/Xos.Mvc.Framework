@@ -1,0 +1,263 @@
+﻿XOS.MVC.Framework
+
+
+v3.1.1
+##################################################################
+
+Target Framework
+
+	This package targets the .NET Framework 4.7.1
+
+Installation
+
+	The package can be installed via the NuGet Package Manager Console or the Package Manager UI.
+	See the NuGet package site (http://www.nuget.org/packages/XOS.MVC.framework) for install instructions.
+
+	Alternatively, the source code can be downloaded directly from the project site at GitHub (http://github.com/bacardibryant/Xos.Mvc.Framework)
+	and manually integrated into your web project.
+
+	When installing manually, you need only to copy the Framework folder into your application folder structure. Then you will need
+	to manually add references to the package dependencies.
+
+Dependencies
+
+	EntityFramework (>= 6.2.0) 
+	jQuery (>= 2.1.0) 
+	jQuery.UI.Combined (>= 1.10.4) 
+	WebActivatorEx (>= 2.0.5)
+
+Using the Javascript and CSS modules
+
+	In order to use the script and style modules, simply add references to your html page. If using MVC and Razor this will typically be the
+	_Layout.cshtml or some other custom _Layout page. However, the script references can be added to standard HTML pages as well as directly to
+	a specific view.
+
+	Usage with MVC application and Razor
+		
+		In your _Layout.cshtml page add the following lines (order important!):
+
+		####TOP OF PAGE
+
+		<-- content/css (site.css and bootstrap) should already be declared but is not required -->
+		<-- modernizer.js should may be referenced but is not required -->
+
+		@Styles.Render("~/Framework/css/optionals")
+		@Styles.Render("~/Framework/css/overrides")
+
+
+		####BOTTOM OF PAGE
+
+		<-- jquery.js should already be referenced, if not add it -->
+		<-- bootstrap.js should already be referenced, but is not required -->
+
+		@Scripts.Render("~/Framework/scripts/optionals")
+		@Scripts.Render("~/Framework/scripts")
+
+		<-- The optional scripts section should be moved below the framework scripts -->
+
+	Usage with HTML Website
+		
+		In the desired .html page, add the following references.
+
+		####TOP OF PAGE
+		
+		<-- site css and/or bootstrap.css should already be referenced, but not required -->
+
+		<link href='/Framework/Content/overrides.css' rel='stylesheet' type='css/text' />
+
+		####BOTTOM OF PAGE
+		<-- jquery.js should already be referenced, if not add it -->
+		<-- bootstrap.js should already be referenced, but is not required -->
+
+		<script src="~/Framework/Scripts/xos-js-exceptions.js"></script>
+		<script src="~/Framework/Scripts/xos-js-extensions.js"></script>
+		<script src="~/Framework/Scripts/jquery-form-defaults.js"></script>
+
+Using the BaseModel and BaseUser classes
+
+	The BaseModel class contains properties common to most all data object records. By deriving models from the base model, the properties, along
+	with data annotations and are implemented in the derived classes automatically.
+
+	// Example of the application Role class derving from BaseModel to take advantage of all of the properties included in the class.
+
+	public class Role : BaseModel
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        [Required]
+        [DataType(DataType.Text)]
+        public string Name { get; set; }
+    }
+
+	The BaseUser class, which is derived from BaseModel, is used to extend the ApplicationUser class or a UserProfile class as needed.
+	This base class again provides common properties that makes coding your user model more efficient and complete without all of the effort.
+
+	// Example of ApplicationUser deriving from BaseUser.
+
+	public class ApplicationUser : BaseUser
+    {
+        [Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserId { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Username { get; set; }
+    }
+
+Using the BaseController and Attribute Filters
+	
+	The BaseController can be applied to any application controller via inheritance. The attribute filters can then be applied
+	at the controller level (applying to all actions within the controller) or at the controller action level (only applying to the sepcific action).
+	These features only apply to an ASP.NET MVC Application and will not apply to an HTML website as there are no ASP.NET MVC Controllers.
+
+	####Code example:
+
+	using System.Web.Mvc;
+	using Xos.Mvc.Framework.Controllers;
+	using Xos.Mvc.Framework.Filters;
+
+	namespace SampleWebApp.Controllers
+	{
+		// inherit from the BaseController
+		public class HomeController : BaseController
+		{
+			[Log] // Apply the log attribute filter to an action or to the controller (all actions).
+			public ActionResult Index()
+			{
+				return View();
+			}
+
+			public ActionResult About()
+			{
+				ViewBag.Message = "Your application description page.";
+
+				return View();
+			}
+
+			public ActionResult Contact()
+			{
+				ViewBag.Message = "Your contact page.";
+
+				return View();
+			}
+		}
+	}
+
+Using the Common.ToHTML helper
+
+	The Common.ToHTML helper is useful for rendering views and partial views into HTML string. While other use cases may exist, one primary
+	use case is for sending email within a controller action.
+
+	 public async Task<bool> NotifyNewAccountCreated(ApplicationUser user)
+        {
+
+
+                    ViewData["Username"] = user.Username;
+
+                    // create notification message to user.
+                    var userNotification = new MailMessage
+                    {
+                        From = new MailAddress("no-reply@mysampleapp.org", "My Sample Web App")
+                    };
+
+                    userNotification.To.Add(new MailAddress(user.Username));
+                    userNotification.Subject = "A New Account Has Been Created";
+
+                    // Subject and multipart/alternative Body
+                    string text = "Account created";
+                    string html = Common.ToHtml("_AccountCreatedEmail", ViewData, ControllerContext);
+                    userNotification.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
+                    userNotification.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
+
+                    // send user notification async.
+                    var result = await SendMessage(userNotification);
+                    return true;
+
+        }
+        
+        // SendMessage
+        private static Task<bool> SendMessage(MailMessage message)
+        {
+            // Init SmtpClient and send
+            var smtpClient = new SmtpClient("{mystmpserver}", Convert.ToInt32(25));
+
+            var tcs = new TaskCompletionSource<bool>();
+            try
+            {
+                smtpClient.Send(message);
+                tcs.TrySetResult(true);
+            }
+            catch
+            {
+                tcs.TrySetResult(false);
+            }
+            finally
+            {
+                message.Dispose();
+                smtpClient.Dispose();
+            }
+            return tcs.Task;
+        }
+
+Using the BaseDbContext
+
+	The BaseDbContext is a base DbContext class with one method currently simply assigning the connection string to the context.
+	However it is a launching pad for many possible abstractions, such as seeding core application data such as roles and an administrator
+	account for first login.
+
+	// Example of BaseDbContext in use.
+
+	public class ApplicationContext: BaseDbContext
+    {
+        public ApplicationContext() : base("ApplicationContext")
+        {
+        }
+        
+        public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+    }
+
+Using the BaseRepository
+
+	The BaseRepository, along with IBaseRepository provides an abstraction for the repository pattern over the DbContext. The BaseRepository accepts
+	a generic DbContext and Entity(Model).
+
+	// Example of inheriting from BaseRepository
+
+	public class WidgetRepository :
+    BaseRepository<ApplicationContext, Widget>, IBaseRepository {
+
+		public Widget GetSingle(int id)
+		{
+			var query = GetAll().FirstOrDefault(x => x.MyModel.Id == id);
+			return query;
+		}
+	}
+
+	// Example usage of the repository in the controller.
+
+	public class WidgetController : Controller {
+
+		private readonly IBaseRepository<Widget> _repository;
+    
+		public WidgetController(IBaseRepository<Widget> repository) {
+			_repository = repository;
+		}
+
+		public ViewResult Index() {
+
+			var model = _repository.GetAll();
+			return View(model);
+		}
+
+		public ActionResult Details(int id) {
+
+			var model = _repository.GetSingle(id);
+			if (model == null)
+				return HttpNotFound();
+
+			return View(model);
+		}
+	}

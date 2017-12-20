@@ -27,5 +27,6 @@ namespace Xos.Mvc.Framework.Models
         [Display(Name="Last Login")]
         [DataType(DataType.DateTime)]
         public DateTime? LastLogin { get; set; }
+        
     }
 }

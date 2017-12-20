@@ -9,6 +9,7 @@ namespace Xos.Mvc.Framework.Infrastructure
 		{
 			// set the connection string.
 			Database.Connection.ConnectionString = ConfigurationManager.ConnectionStrings[ connectionStringName ].ConnectionString;
-		}
-	}
+        }
+
+    }
 }

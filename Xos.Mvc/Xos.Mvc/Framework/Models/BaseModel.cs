@@ -9,6 +9,10 @@ namespace Xos.Mvc.Framework.Models
     /// </summary>
     public class BaseModel
     {
+        // EF 6 AND EF Core
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         [Display(Name = "Created By")]
         [StringLength(250, ErrorMessage = "Created by cannot exceed 150 characters.")]
         public string CreatedBy { get; set; }

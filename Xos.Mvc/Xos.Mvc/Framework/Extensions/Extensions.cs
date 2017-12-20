@@ -26,8 +26,6 @@ namespace Xos.Mvc.Framework.Extensions
                 candidateDate = candidateDate.AddDays(1);
             }
 
-            // set time to just before midnight to include all records for the given date.
-            candidateDate = new DateTime(candidateDate.Year, candidateDate.Month, candidateDate.Day, 23, 59, 59, 59);
             return candidateDate;
         }
 
@@ -39,9 +37,7 @@ namespace Xos.Mvc.Framework.Extensions
 
         public static DateTime LastDayOfMonth(this DateTime date)
         {
-            // set datetime to just before midnight.
-            var candidateDate = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month), 23, 59,
-                59, 59);
+            var candidateDate = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
             return candidateDate;
         }
 

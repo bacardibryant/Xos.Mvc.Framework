@@ -2,6 +2,33 @@
 
 Release Notes
 
+v3.1.1
+###############################################################################################################################################
+
+### New
+	- Added formal documentation notes.
+	- Added BaseRepository and IBaseRepository. A repository pattern that works with generics, such that the application context can be passed in.
+
+
+### Fixed
+	- CSS error loading open-type font for @font-face FontAwesome and Arsenal font faces.
+	- Removed invalid open-type font Trebuchet due to limited support for .eot font types by browsers.
+
+
+### Changed
+	- Added EF6 and EF Core Timestamp property on base models.
+	- Removed the String.prototype.trim javascript extension as it is redundant with the ES implementation.
+	- Removed the String.prototype.trimRight() and String.prototype.trimLeft() functions.
+	  These are non-standard features supported by both Edge and Chrome.
+
+### Developer
+
+
+### Unresolved
+
+
+###############################################################################################################################################
+
 v3.1.0
 ###############################################################################################################################################
 

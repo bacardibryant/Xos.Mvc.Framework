@@ -39,7 +39,7 @@
 */
 
 var isValid = window.jQuery && typeof (jQuery) !== 'undefined';
-var hasConsole = typeof (console) !== 'undefined' && console != null;
+var hasConsole = typeof (console) !== 'undefined' && console !== null;
 
 if (isValid) {
     $(document).ready(function () {
@@ -48,7 +48,7 @@ if (isValid) {
         try {
             $(":input:visible:enabled").each(function () {
 
-                if (($(this).attr('type') == 'text') && ($(this).is('input'))) {
+                if (($(this).attr('type') === 'text') && ($(this).is('input'))) {
                     $(this).focus();
                     return false;
                 }
@@ -69,7 +69,7 @@ if (isValid) {
         // if the input type is text, then on click, select all text.
         try {
             $(":input:visible:enabled").each(function () {
-                if (($(this).attr('type') == 'text') && ($(this).is('input'))) {
+                if (($(this).attr('type') === 'text') && ($(this).is('input'))) {
                     $(this).click(function () {
                         $(this).select();
                     });

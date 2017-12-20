@@ -1,9 +1,12 @@
 ﻿using System.Web.Mvc;
+using Xos.Mvc.Framework.Infrastructure;
+using Xos.Mvc.Framework.Models;
 
 namespace Xos.Mvc.Framework.Controllers
 {
     public class BaseController : Controller
     {
+        
         /// <summary>
         /// Adds exception logging to the controller so that exceptions can be logged.
         /// This is a simplistic approach, tools such as ELMAH (https://elmah.github.io/) may be better candidates

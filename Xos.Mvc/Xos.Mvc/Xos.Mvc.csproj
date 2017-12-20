@@ -162,6 +162,7 @@
     <Content Include="Framework\Content\Fonts\fontawesome\fontawesome-webfont.svg" />
     <Content Include="Framework\Content\overrides.css" />
     <Content Include="Framework\Content\styles-not-found.css" />
+    <Content Include="Framework\Documentation.txt" />
     <Content Include="Framework\README.txt" />
     <Content Include="Framework\Scripts\jquery-form-defaults.js" />
     <Content Include="Framework\Scripts\scripts-not-found.js" />
@@ -211,7 +212,9 @@
     <Compile Include="Framework\Filters\ValidateReferrerAttribute.cs" />
     <Compile Include="Framework\Globalization\GlobalizationStrings.Designer.cs" />
     <Compile Include="Framework\Infrastructure\BaseDbContext.cs" />
+    <Compile Include="Framework\Infrastructure\BaseRepository.cs" />
     <Compile Include="Framework\Infrastructure\FrameworkBundleConfig.cs" />
+    <Compile Include="Framework\Infrastructure\IBaseRepository.cs" />
     <Compile Include="Framework\Models\BaseModel.cs" />
     <Compile Include="Framework\Models\BaseUser.cs" />
     <Compile Include="Framework\Utilities\Common.cs" />
@@ -235,7 +238,6 @@
     <Content Include="Framework\Content\Fonts\fontawesome\fontawesome-webfont.ttf" />
     <Content Include="Framework\Content\Fonts\fontawesome\fontawesome-webfont.woff" />
     <Content Include="Framework\Content\Fonts\fontawesome\FontAwesome.otf" />
-    <Content Include="Framework\Content\Fonts\trebuchet\trebuchet.eot" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
