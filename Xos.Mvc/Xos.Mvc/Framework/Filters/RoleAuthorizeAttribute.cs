@@ -15,6 +15,7 @@ namespace Xos.Mvc.Framework.Filters
             get { return _redirectUrl; }
             set { _redirectUrl = value; }
         }
+
         public RoleAuthorizeAttribute()
         {
         }

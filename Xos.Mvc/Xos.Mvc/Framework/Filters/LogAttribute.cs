@@ -6,6 +6,7 @@ namespace Xos.Mvc.Framework.Filters
 	{
 		public override void OnActionExecuting( ActionExecutingContext filterContext )
 		{
+            filterContext.HttpContext.Response.Write("Logging via the LogAttribute filter...");
 			base.OnActionExecuting( filterContext );
 		}
 

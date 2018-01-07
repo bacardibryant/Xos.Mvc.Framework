@@ -11,7 +11,7 @@ Target Framework
 Installation
 
 	The package can be installed via the NuGet Package Manager Console or the Package Manager UI.
-	See the NuGet package site (http://www.nuget.org/packages/XOS.MVC.framework) for install instructions.
+	See the NuGet package site (http://www.nuget.org/packages/XOS.MVC.Framework) for install instructions.
 
 	Alternatively, the source code can be downloaded directly from the project site at GitHub (http://github.com/bacardibryant/Xos.Mvc.Framework)
 	and manually integrated into your web project.
@@ -85,6 +85,7 @@ Using the BaseModel and BaseUser classes
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         [Required]
         [DataType(DataType.Text)]
         public string Name { get; set; }
@@ -150,10 +151,8 @@ Using the Common.ToHTML helper
 	The Common.ToHTML helper is useful for rendering views and partial views into HTML string. While other use cases may exist, one primary
 	use case is for sending email within a controller action.
 
-	 public async Task<bool> NotifyNewAccountCreated(ApplicationUser user)
+		public async Task<bool> NotifyNewAccountCreated(ApplicationUser user)
         {
-
-
                     ViewData["Username"] = user.Username;
 
                     // create notification message to user.
@@ -208,56 +207,70 @@ Using the BaseDbContext
 	account for first login.
 
 	// Example of BaseDbContext in use.
-
+	// inherit from BaseDbContext
 	public class ApplicationContext: BaseDbContext
     {
-        public ApplicationContext() : base("ApplicationContext")
-        {
-        }
+		public ApplicationContext():base(){}
+
+        public ApplicationContext(string connectionStringName):base(connectionStringName){}
         
+		// Define DbSets
         public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+		public DbSet<SampleModel> SampleModels { get; set; }
     }
 
 Using the BaseRepository
 
 	The BaseRepository, along with IBaseRepository provides an abstraction for the repository pattern over the DbContext. The BaseRepository accepts
-	a generic DbContext and Entity(Model).
+	a generic DbContext and an Entity(BaseModel).
+
+	// Creating an entity class derived from BaseModel
+
+	public class SampleModel : BaseModel
+	{
+		[Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public string Id {get; set;}
+
+		public string ItemName {get; set;}
+	}
 
 	// Example of inheriting from BaseRepository
 
-	public class WidgetRepository :
-    BaseRepository<ApplicationContext, Widget>, IBaseRepository {
-
-		public Widget GetSingle(int id)
-		{
-			var query = GetAll().FirstOrDefault(x => x.MyModel.Id == id);
-			return query;
-		}
+	public class ApplicationRepository<T> : BaseRepository<T> where T: class
+	{
+		 public ApplicationRepository(BaseDbContext context):base(context){}
 	}
 
 	// Example usage of the repository in the controller.
 
-	public class WidgetController : Controller {
-
-		private readonly IBaseRepository<Widget> _repository;
+	public class HomeController : BaseController
+	{
+		ApplicationRepository<SampleModel> _repository = new ApplicationRepository<SampleModel>(new ApplicationContext());
     
-		public WidgetController(IBaseRepository<Widget> repository) {
-			_repository = repository;
-		}
-
-		public ViewResult Index() {
-
-			var model = _repository.GetAll();
-			return View(model);
-		}
+		public HomeController() {}
 
 		public ActionResult Details(int id) {
 
-			var model = _repository.GetSingle(id);
-			if (model == null)
-				return HttpNotFound();
+			// demonstrate use of the repository pattern by adding an item then retrieving it.
+            var timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            _repository.Add(new SampleModel
+            {
+                Id = 1,
+                ItemName = "Sample Item",
+                CreatedBy = "me",
+                CreatedOn = DateTime.Now,
+                LastModifiedBy = "me",
+                LastModifiedOn = DateTime.Now,
+                RowVersion = BitConverter.GetBytes(timestamp),
+                IsDeleted = false
+            });
+            _repository.Save();
 
-			return View(model);
+            // retrieve the items using the repository method.
+            IQueryable<SampleModel> viewModel = _repository.GetAll();
+
+            return View(viewModel);
 		}
 	}

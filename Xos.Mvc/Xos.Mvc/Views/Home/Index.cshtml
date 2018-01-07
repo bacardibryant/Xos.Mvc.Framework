@@ -1,9 +1,9 @@
-﻿
+﻿@model IQueryable<Xos.Mvc.Models.SampleModel>
 <div class="row">
     <h2>Sample Page</h2>
 </div>
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-lg-4">
         <fieldset>
             <legend>Sample Form</legend>
             <form id="mainForm" name="MainForm">
@@ -13,17 +13,26 @@
                     <label for="Date" class="col-form-label">Enter today's date:</label>
                     <input type="text" id="date" name="date" class="form-control" />
                 </div>
-                
+
                 <div class="form-row">
                     <input id="submitButton" type="button" value="Submit" class="btn btn-success text-right" />
                 </div>
             </form>
         </fieldset>
     </div>
-    <div class="col-lg-3">
-            <p id="result"></p>
-            <label for="resultNoSpaces">The string extension method applied.</label>
-            <p id="resultNoSpaces"></p>
+    <div class="col-lg-4">
+        <p id="result"></p>
+        <label for="resultNoSpaces">The string extension method applied.</label>
+        <p id="resultNoSpaces"></p>
+    </div>
+    <div class="col-lg-4">
+       <h2>Model Output</h2>
+        @foreach(var item in Model)
+        {
+            <div>
+                @item.ItemName
+            </div>
+        }
     </div>
 </div>
 <hr />
@@ -40,6 +49,8 @@
 </div>
 @section Scripts{
     <script type="text/javascript">
+
+        // javascript to show the string extensions in action.
         $('#submitButton').click(function () {
             var name = $('#Name').val();
             var date = $('#date').val();

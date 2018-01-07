@@ -6,8 +6,9 @@ namespace Xos.Mvc.Framework.Models
     /// <summary>
     /// A base model with standard model properties. Application models inheriting from this class get these
     /// properties automatically without the need to add them each time.
+    /// ID property is not included as not all models use the same data type to store identity fields.
     /// </summary>
-    public class BaseModel
+    public abstract class BaseModel
     {
         // EF 6 AND EF Core
         [Timestamp]

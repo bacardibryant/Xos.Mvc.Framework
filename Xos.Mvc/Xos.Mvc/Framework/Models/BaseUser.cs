@@ -7,7 +7,7 @@ namespace Xos.Mvc.Framework.Models
     /// A base user model that can extend the default ASP.NET MVC Application User adding these fields
     /// automatically.
     /// </summary>
-    public class BaseUser : BaseModel
+    public abstract class BaseUser : BaseModel
     {
         [Display(Name="First Name")]
         [StringLength(100,ErrorMessage="{0} must not exceed {2} characters.")]
