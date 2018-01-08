@@ -22,28 +22,28 @@ The framework directory contains some sub-directories which are empty. These sub
   <li>
     Extensions to the optimization system by adding a <code>FrameworkBundleConfig.cs</code> file which adds additonal script and style bundles found
     in the respective subdirectories. The stylesheets are implemented as overrides which should be used to add custom style definitions
-    without modifying the base corporate, bootstrap, or other main template.<br />
+    without modifying the base corporate, bootstrap, or other main template.<br /><br />
   </li>
   <li>
-    BaseModel and BaseUser classes that add common properties for models when used in derived models.<br />
+    BaseModel and BaseUser classes that add common properties for models when used in derived models.<br /><br />
   </li>
   <li>
-    <code>BaseDbContext.cs</code> and <code>BaseRepository<T></code>, <code>IBaseRepository<T></code> implements the repository pattern, with generics, which can be leveraged
-    with derived <code>ApplicationContext.cs</code> and <code>ApplicationRepository.cs</code> classes.<br />
+    <code>BaseDbContext.cs</code> and <code>BaseRepository.cs</code>, <code>IBaseRepository.cs</code> implements the repository pattern, with generics, which can be leveraged
+    with derived <code>ApplicationContext.cs</code> and <code>ApplicationRepository.cs</code> classes.<br /><br />
    </li>
    <li>
-     Javascript, more specifically jQuery extensions in <code>jquery-form-defaults.js</code> that provide additonal DOM scripting support.<br />
+     Javascript, more specifically jQuery extensions in <code>jquery-form-defaults.js</code> that provide additonal DOM scripting support.<br /><br />
     </li>
     <li>
-      <code>Extensions.cs</code> provides extensions for DateTime, int, and Enumerable<T> which allow for an Action to be perform on each item in the collection.<br />
+      <code>Extensions.cs</code> provides extensions for DateTime, int, and Enumerable<T> which allow for an Action to be perform on each item in the collection.<br /><br />
     </li>
     <li>
-      Finally, a set of AttributeFilters that are simply stubbed out to allow for domain specific implementations.<br />
+      Finally, a set of AttributeFilters that are simply stubbed out to allow for domain specific implementations.<br /><br />
     </li>
   </ul>
 
-<p>
-  Copyright 2013-2018 XNODE<sup>&trade;</sup> Solutions, LLC<br />
-  Released under MIT License<br />
-  All code provided herein is provided AS-IS.<br />
-</p>
+<small>
+  Copyright 2013-2018 XNODE Solutions, LLC
+  Released under MIT License
+  All code provided herein is provided AS-IS.
+</small>
