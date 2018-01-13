@@ -1,4 +1,4 @@
-<h1>Xos.Mvc.Framework</h1>
+<h1>XOS.MVC.Framework</h1>
 
 <p>
 A set of .NET (C#) base classes, extensions, javascript and css helpers to aid in rapid web application development.
