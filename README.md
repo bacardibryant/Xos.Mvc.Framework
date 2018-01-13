@@ -33,7 +33,7 @@ A set of .NET (C#) base classes, extensions, javascript and css helpers to aid i
 The Xos.Mvc.Framework project aims to speed up development by providing useful base classes, extensions, filters, and scripts for ASP.NET MVC applications. While the features are not exhaustive (in some cases only the plumbing for a feature exists, it hasn't been implemented), these components may serve as templates for implementation in an application.
 </p>
 <p>
-When installed, the host project maintains its original structure and Xos.Mvc project simply adds a folder named Framework with all necessary sub-directories, classes and other assets. This keeps the tools in one place and allow for clean updates without polluting the project with magic directories and mystery files. Another benefit is that a simple directory delete operation removes the framework from the application (or if installed via the Package Manager Console then <code>uninstall-package xos.mvc.framework</code>.
+When installed, the host project maintains its original structure and Xos.Mvc project simply adds a folder named Framework with all necessary sub-directories, classes and other assets. This keeps the tools in one place and allow for clean updates without polluting the project with magic directories and mystery files. Another benefit is that a simple directory delete operation removes the framework from the application (or if installed via the Package Manager Console,<br /> then <code>uninstall-package xos.mvc.framework</code>.
 </p>
 <p>
 The framework directory contains some sub-directories which are empty. These sub-directories act as stubs for the most logical types of extensions to come. Whether implemented in your own project or by the authors of this project, the sub-directories serve as a structural roadmap for the project.
@@ -58,10 +58,10 @@ The framework directory contains some sub-directories which are empty. These sub
      Javascript, more specifically jQuery helper functions, found in <code>~/Framework/Scripts/jquery-form-defaults.js</code> provide default form behavior. <code>~/Framework/Scripts/scripts-not-found.js</code> is a fallback script when attempting to load optional javascript libraries such as the <code>jquery.ui.timepicker.js</code> plugin which is supported by the framework but not included by default. <code>~/Framework/Scripts/xos-js-exceptions.js</code> holds the custom javascript exceptions that can be called by the framwork. Finally, <code>~/Framework/Scripts/xos-js-extensions.js</code> provide extensions to javascript types.<br /><br />
     </li>
     <li>
-      <code>Extensions.cs</code> provides extensions for .NET system types <code>DateTime</code> and <code>int</code>, as well as the .NET Framework type <code>IEnumerable<<T>></code> which iterates over the collection and performs an Action on each item within the collection.<br /><br />
+      <code>~/Framework/Extensions/Extensions.cs</code> provides extensions for .NET system types <code>DateTime</code> and <code>int</code>, as well as the .NET Framework type <code>IEnumerable<<T>></code> which iterates over the collection and performs an Action on each item within the collection.<br /><br />
     </li>
     <li>
-      Finally, a set of AttributeFilters found in the Framework/Filters directory folder, that are simply stubbed out to allow for domain specific implementations.<br /><br />
+			Finally, a set of Attribute Filters found in the <code>~/Framework/Filters</code> directory folder, that are simply stubbed out to allow for domain specific implementations.<br /><br />
     </li>
   </ul>
 
