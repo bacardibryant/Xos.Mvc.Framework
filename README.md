@@ -65,8 +65,10 @@ The framework directory contains some sub-directories which are empty. These sub
     </li>
   </ul>
 
-<small>
-  Copyright 2013-2018 XNODE Solutions, LLC
-  Released under MIT License
-  All code provided herein is provided AS-IS.
-</small>
+<address>
+  <ul style="line-decoraton:none;">
+    <li>Copyright 2013-2018 XNODE&trade; Solutions, LLC</li>
+    <li>Released under MIT License</li>
+    <li>All code provided herein is provided AS-IS.<li>
+  </ul>
+</address>
