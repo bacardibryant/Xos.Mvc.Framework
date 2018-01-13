@@ -50,6 +50,7 @@
 	<ul>
 		<li>
 			Extensions to the optimization system by adding a <code>~/Framework/Infrastructure/FrameworkBundleConfig.cs</code> file which 					adds additonal script and style bundles found,in the respective subdirectories. The stylesheets are implemented as overrides 						which should be used to add custom style definitions without modifying the base corporate, bootstrap, or other main template.
+			<br /><br />
 		</li>
 		<li>
 			<code>~/Framework/Models/BaseModel.cs</code> and <code>~/Framework/Models/BaseUser.cs</code> are base classes that add common 					properties when used in derived models.<br /><br />
@@ -58,7 +59,7 @@
 			<code>~/Framework/Infrastructure/BaseDbContext.cs</code>, <code>~/Framework/Infrastructure/BaseRepository.cs</code> and 								<code>~/Framework/Infrastructure/IBaseRepository.cs</code> serve as base classes which implement the repository pattern with 						generics. This functionality can be leveraged with derived classes such as an <code>ApplicationDbContext.cs</code> and 									<code>ApplicationRepository.cs</code> classes.<br /><br />
 		 </li>
 		 <li>
-			 Javascript, more specifically jQuery helper functions, found in <code>~/Framework/Scripts/jquery-form-defaults.js</code> provide 				default form behavior. <code>~/Framework/Scripts/scripts-not-found.js</code> is a fallback script when attempting to load 							optional javascript libraries such as the <code>jquery.ui.timepicker.js</code> plugin which is supported by the framework but 					not included by default. <code>~/Framework/Scripts/xos-js-exceptions.js</code> holds the custom javascript exceptions that can 					be called by the framwork. Finally, <code>~/Framework/Scripts/xos-js-extensions.js</code> provide extensions to javascript 							types.
+			 Javascript, more specifically jQuery helper functions, found in <code>~/Framework/Scripts/jquery-form-defaults.js</code> provide 				default form behavior. <code>~/Framework/Scripts/scripts-not-found.js</code> is a fallback script when attempting to load 							optional javascript libraries such as the <code>jquery.ui.timepicker.js</code> plugin which is supported by the framework but 					not included by default. <code>~/Framework/Scripts/xos-js-exceptions.js</code> holds the custom javascript exceptions that can 					be called by the framwork. Finally, <code>~/Framework/Scripts/xos-js-extensions.js</code> provide extensions to javascript 							types.<br /><br />
 			</li>
 			<li>
 				<code>~/Framework/Extensions/Extensions.cs</code> provides extensions for .NET system types <code>DateTime</code> and 									<code>int</code>, as well as the .NET Framework type <code>IEnumerable<<T>></code> which iterates over the collection and 							performs an Action on each item within the collection.<br /><br />
@@ -70,11 +71,9 @@
 </div>
 
 <div id="copyright">
-	<address>
-		<ul style="list-style:none;">
-			<li>XNODE&trade; Solutions, LLC &copy; 2013-2018</li>
-			<li>Released under MIT License</li>
-			<li>All code provided herein is provided AS-IS.</li>
-		</ul>
-	</address>
+	<p>
+			XNODE&trade; Solutions, LLC &copy; 2013-2018<br/>
+			Released under MIT License<br/>
+			All code provided herein is provided AS-IS.
+	</p>
 </div>
