@@ -23,24 +23,24 @@
 	</p>
 	<p><em>Uninstalling</em></p>
 	<p>
-		To remove the package installed via the Package Manager Console, use the command:<br />
+		To remove the package via the Package Manager Console, use the command:<br />
 		<code>PM> uninstall-package xos.mvc.framework</code>
 	</p>
 	<p>
-		If the source was added to your project manually, simply delete the <code>~/Framework</code> folder just so long as it is the 					folder containing the source code for XOS.MVC.Framework.
+		If the source was added to the project manually, simply delete the <code>~/Framework</code> folder, just so long as it is the 					folder containing the source code for the XOS.MVC.Framework.
 	</p>
 </div>
 <div id="summary">
 	<h3>Summary</h3>
 	<p>
-		The XOS.MVC.Framework project aims to speed up development by providing useful base classes, extensions, filters, and scripts for 			ASP.NET MVC applications. While the features are not exhaustive (in some cases only the plumbing for a feature exists, it hasn't 				been implemented), these components may serve as templates for implementation in an application.
+		The XOS.MVC.Framework project aims to speed up development by providing useful base classes, extensions, filters, and scripts for 			ASP.NET MVC applications. While the features are not exhaustive (in some cases only the plumbing for a feature exists, the 							functionality hasn't been implemented), these components serve as templates for implementation in an application.
 	</p>
 	<p>
 		When installed, the host project maintains its original structure and Xos.Mvc project simply adds a folder named Framework with all 		necessary sub-directories, classes and other assets. This keeps the tools in one place and allow for clean updates without 							polluting the project with magic directories and mystery files. Another benefit is that a simple directory delete operation removes 		the framework from the application (or if installed via the Package Manager Console,<br />
 		then <code>uninstall-package xos.mvc.framework</code>.
 	</p>
 	<p>
-		The framework directory contains some sub-directories which are empty. These sub-directories act as stubs for the most logical 					types of extensions to come. Whether implemented in your own project or by the authors of this project, the sub-directories serve 			as a structural roadmap for the project.
+		The framework directory contains a few sub-directories that are empty. These sub-directories act as stubs for the most logical 					types of modules to come. Whether implemented by the application owner, or by the authors of this project, these sub-directories 				serve as a structural roadmap for the project.
 	</p>
 </div>
 
@@ -49,7 +49,7 @@
 	<em>Some key project features are:</em>
 	<ul>
 		<li>
-			Extensions to the optimization system by adding a <code>~/Framework/Infrastructure/FrameworkBundleConfig.cs</code> file which 					adds additonal script and style bundles found in the respective subdirectories. The stylesheets are implemented as overrides 						which should be used to add custom style definitions without modifying the base corporate, bootstrap, or other main template.
+			Extensions to the optimization system by adding a <code>~/Framework/Infrastructure/FrameworkBundleConfig.cs</code> file which 					adds additonal script and style bundles found in the respective subdirectories. The stylesheets are implemented as overrides 						which should be used to add custom style definitions without modifying the base corporate, bootstrap, or other design template.
 			<br /><br />
 		</li>
 		<li>
